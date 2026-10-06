@@ -1,0 +1,223 @@
+/* HeightNet - Dedicated 3D viewer screen styles */
+
+.dedicated-viewer-root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b0c0f;
+  color: var(--text-primary);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Compact Top Bar */
+.viewer-top-bar {
+  height: 38px;
+  min-height: 38px;
+  background-color: var(--bg-panel);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  z-index: 20;
+}
+
+.viewer-top-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.viewer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.viewer-brand .brand-name {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: -0.2px;
+  color: var(--text-primary);
+}
+
+.viewer-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--accent-light);
+  background-color: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+
+.viewer-file-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.meta-sep {
+  opacity: 0.4;
+}
+
+.viewer-top-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Segmented Control for Camera Modes */
+.viewer-segmented-group {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-app);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  gap: 2px;
+}
+
+.viewer-segment-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 24px;
+  padding: 0 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.viewer-segment-btn:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-hover);
+}
+
+.viewer-segment-btn.active {
+  color: #ffffff;
+  background-color: var(--accent-primary);
+}
+
+.viewer-divider {
+  width: 1px;
+  height: 18px;
+  background-color: var(--border-subtle);
+  margin: 0 3px;
+}
+
+.viewer-icon-btn {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.viewer-icon-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.viewer-icon-btn.active {
+  background-color: var(--accent-muted);
+  color: var(--accent-light);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+/* Back to Workspace button */
+.viewer-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.viewer-back-btn:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--accent-light);
+  color: var(--accent-light);
+}
+
+/* Main Viewport Stage */
+.viewer-stage {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0d1015;
+}
+
+.viewer-stage .three-canvas-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Subtle Status Bar */
+.viewer-status-bar {
+  height: 24px;
+  min-height: 24px;
+  background-color: var(--bg-panel);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  z-index: 20;
+}
+
+.viewer-status-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-item .status-label {
+  color: var(--text-muted);
+  font-size: 9.5px;
+}
+
+.status-item .status-val {
+  color: var(--text-primary);
+}
+
+.status-item .status-val.accent {
+  color: var(--accent-light);
+}

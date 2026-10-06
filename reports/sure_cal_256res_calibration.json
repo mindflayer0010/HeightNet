@@ -1,0 +1,139 @@
+{
+  "method": "SURE-Cal",
+  "semantic_source": "frozen Depth Anything encoder + learned GAMUS semantic head",
+  "calibration_source": "training scenes only",
+  "calibration": {
+    "global_calibration": {
+      "scale": 10.40151325952213,
+      "offset": 2.361998903801085,
+      "residual_mae": 6.312367527956496,
+      "residual_rmse": 8.932901260925366,
+      "inlier_count": 343094,
+      "sample_count": 497846
+    },
+    "class_calibrations": {
+      "0": {
+        "class_id": 0,
+        "scale": 4.392879094364224,
+        "offset": 1.9248612021462275,
+        "sample_count": 324,
+        "residual_mae": 3.5131963184666315,
+        "residual_rmse": 11.805696701768651
+      },
+      "1": {
+        "class_id": 1,
+        "scale": 0.01126601499006874,
+        "offset": 0.002558309165081596,
+        "sample_count": 59025,
+        "residual_mae": 0.08128749827170778,
+        "residual_rmse": 0.8555800436414026
+      },
+      "2": {
+        "class_id": 2,
+        "scale": 0.08555696397644397,
+        "offset": 0.10371360662539786,
+        "sample_count": 45013,
+        "residual_mae": 0.5830114594036975,
+        "residual_rmse": 0.9978786825808634
+      },
+      "3": {
+        "class_id": 3,
+        "scale": 4.707332460508681,
+        "offset": 4.062743166172154,
+        "sample_count": 105504,
+        "residual_mae": 3.4849104595003833,
+        "residual_rmse": 5.038550444834869
+      },
+      "4": {
+        "class_id": 4,
+        "scale": 9.528534801197594,
+        "offset": 4.369868617562315,
+        "sample_count": 75,
+        "residual_mae": 8.632751843084204,
+        "residual_rmse": 10.361198133178117
+      },
+      "5": {
+        "class_id": 5,
+        "scale": 1.0154923442684147,
+        "offset": 0.26225912186947875,
+        "sample_count": 115475,
+        "residual_mae": 3.32129368536828,
+        "residual_rmse": 6.737389763703134
+      },
+      "6": {
+        "class_id": 6,
+        "scale": 8.07471464104482,
+        "offset": 12.355036112661615,
+        "sample_count": 172430,
+        "residual_mae": 7.298385516554004,
+        "residual_rmse": 9.18231648147417
+      }
+    },
+    "shrinkage": 64.0,
+    "min_class_samples": 32
+  },
+  "results": [
+    {
+      "split": "validation",
+      "scene_id": "DC_02_24",
+      "baseline_global_affine": {
+        "mae": 9.78819387081018,
+        "rmse": 12.482204530000807,
+        "r2": 0.07691942138864216,
+        "sample_count": 1035661
+      },
+      "sure_cal_oracle_semantics": {
+        "mae": 9.403844643915635,
+        "rmse": 12.231856139248618,
+        "r2": 0.11357549441914228,
+        "sample_count": 1035661
+      },
+      "sure_cal_uncertainty_gated": {
+        "mae": 9.660356217394916,
+        "rmse": 12.41040390651898,
+        "r2": 0.08750843844071599,
+        "sample_count": 1035661
+      }
+    },
+    {
+      "split": "test",
+      "scene_id": "DC_02_25",
+      "baseline_global_affine": {
+        "mae": 4.59437795969793,
+        "rmse": 6.297203481992651,
+        "r2": 0.37742804120205276,
+        "sample_count": 1048576
+      },
+      "sure_cal_oracle_semantics": {
+        "mae": 4.205067318254752,
+        "rmse": 6.026835738540745,
+        "r2": 0.4297401286125112,
+        "sample_count": 1048576
+      },
+      "sure_cal_uncertainty_gated": {
+        "mae": 4.327932815472556,
+        "rmse": 6.121597467543955,
+        "r2": 0.4116664169998703,
+        "sample_count": 1048576
+      }
+    }
+  ],
+  "inference_size": 256,
+  "summary": {
+    "baseline_global_affine": {
+      "scene_count": 2,
+      "mean_mae_m": 7.1912859152540545,
+      "mean_rmse_m": 9.389704005996728
+    },
+    "sure_cal_oracle_semantics": {
+      "scene_count": 2,
+      "mean_mae_m": 6.8044559810851935,
+      "mean_rmse_m": 9.129345938894682
+    },
+    "sure_cal_uncertainty_gated": {
+      "scene_count": 2,
+      "mean_mae_m": 6.994144516433736,
+      "mean_rmse_m": 9.266000687031468
+    }
+  }
+}

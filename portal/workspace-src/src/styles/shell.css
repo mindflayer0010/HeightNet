@@ -1,0 +1,238 @@
+/* Application Desktop Shell Layout */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-app);
+}
+
+/* Professional Top Menu & Window Header Bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 42px;
+  min-height: 42px;
+  background-color: var(--bg-panel-header);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 14px;
+  z-index: 100;
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.app-branding {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  user-select: none;
+}
+
+.app-logo-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-light);
+}
+
+.app-menu-bar {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.menu-trigger-btn {
+  padding: 4px 9px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 400;
+  transition: all 80ms;
+  height: 30px;
+}
+
+.menu-trigger-btn:hover,
+.menu-trigger-btn.active {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.top-bar-center {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.top-bar-project-name {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 1360px) {
+  .top-bar-center {
+    display: none;
+  }
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+.upload-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 4px 10px;
+  border: 1px solid rgba(110, 231, 183, 0.4);
+  border-radius: var(--radius-sm);
+  background: rgba(16, 185, 129, 0.14);
+  color: #a7f3d0;
+  font-size: 11px;
+}
+
+.upload-trigger:hover {
+  border-color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.24);
+  color: #fff;
+}
+
+.map-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 4px 10px;
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  border-radius: var(--radius-sm);
+  background: rgba(59, 130, 246, 0.14);
+  color: #bfdbfe;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.map-trigger:hover {
+  border-color: #93c5fd;
+  background: rgba(59, 130, 246, 0.24);
+  color: #fff;
+}
+
+.cmd-k-trigger {
+  padding: 4px 9px;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+}
+
+.cmd-k-trigger:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+.kbd-badge {
+  font-family: var(--font-mono);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 0 3px;
+  font-size: 8.5px;
+  color: var(--text-muted);
+}
+
+/* Main Workspace Flex */
+.workspace-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 42px);
+}
+
+/* Splitter Bar */
+.workspace-splitter {
+  width: 3px;
+  background: var(--border-subtle);
+  cursor: col-resize;
+  transition: background-color 100ms;
+  position: relative;
+  z-index: 20;
+}
+
+.workspace-splitter:hover,
+.workspace-splitter.dragging {
+  background-color: var(--accent-light);
+}
+
+/* Notification Toasts */
+.notification-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.notification-toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-panel-header);
+  border: 1px solid var(--border-medium);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  padding: 6px 10px;
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+  font-size: 10.5px;
+  max-width: 320px;
+  animation: slideIn 120ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.notification-toast.info {
+  border-left: 2px solid var(--status-info);
+}
+
+.notification-toast.success {
+  border-left: 2px solid var(--status-success);
+}
+
+.notification-toast.warning {
+  border-left: 2px solid var(--status-warning);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

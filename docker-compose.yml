@@ -1,0 +1,28 @@
+services:
+  heightnet:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: heightnet:local
+    ports:
+      - "${HEIGHTNET_PORT:-8000}:8000"
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+      HF_HOME: /app/.cache/huggingface
+    volumes:
+      # Keep large datasets, checkpoints, source imagery, and generated files
+      # on the host. The container only holds the application and dependencies.
+      - ./data:/app/data
+      - ./reports:/app/reports:ro
+      - heightnet-huggingface:/app/.cache/huggingface
+    init: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  heightnet-huggingface:

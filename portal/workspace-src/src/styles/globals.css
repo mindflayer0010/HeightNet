@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Professional Workstation Dark Neutral Palette */
+  --bg-app: #0f1417;
+  --bg-panel: #151c20;
+  --bg-panel-header: #192329;
+  --bg-subtle: #1d292e;
+  --bg-hover: #26363b;
+  --bg-active: #294046;
+  --bg-input: #10181c;
+
+  --border-subtle: #27363b;
+  --border-medium: #3b5056;
+  --border-strong: #587077;
+  --border-active: #2dd4bf;
+
+  --text-primary: #e7f0f1;
+  --text-secondary: #a5b5b8;
+  --text-muted: #718488;
+  --text-disabled: #4a5a5e;
+
+  --accent-primary: #0f9f8f;
+  --accent-light: #5eead4;
+  --accent-muted: rgba(20, 184, 166, 0.14);
+  --accent-active: #2dd4bf;
+
+  --status-success: #10b981;
+  --status-warning: #f59e0b;
+  --status-danger: #f43f5e;
+  --status-info: #0ea5e9;
+
+  --radius-xs: 3px;
+  --radius-sm: 5px;
+  --radius-md: 7px;
+  --radius-lg: 10px;
+
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+
+  --shadow-dropdown: 0 4px 14px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--border-medium);
+  --shadow-modal: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 0 1px var(--border-strong);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+/* Workstation Precision Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-panel);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-xs);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Compact Desktop Button Base */
+button {
+  font-family: inherit;
+  font-size: 11px;
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background-color 80ms ease, border-color 80ms ease, color 80ms ease;
+  user-select: none;
+}
+
+button:focus-visible {
+  outline: 1px solid var(--accent-light);
+  outline-offset: -1px;
+}
+
+/* Compact Desktop Inputs */
+input, select, textarea {
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 3px 6px;
+  outline: none;
+  height: 22px;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent-light);
+}
+
+/* Range input styling - Technical slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  background: var(--border-medium);
+  border: none;
+  border-radius: 1px;
+  padding: 0;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 1px;
+  background: var(--accent-light);
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #ffffff;
+}
+
+/* Restrained Technical Badges */
+.dw-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 4px;
+  height: 15px;
+  font-size: 9px;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  border-radius: var(--radius-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background-color: var(--bg-subtle);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.dw-badge-blue {
+  background-color: rgba(14, 165, 233, 0.12);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.dw-badge-green {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+.dw-badge-amber {
+  background-color: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.25);
+}

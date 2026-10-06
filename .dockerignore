@@ -1,0 +1,30 @@
+.git/
+.gitignore
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# The React image is built in the first Docker stage.
+portal/workspace-src/node_modules/
+portal/workspace-src/dist/
+
+# Never bake local data or model weights into the image.
+data/*
+!data/**/
+!data/**/README.md
+data/gamus_raw/
+data/sentinel2_dehradun/
+data/portal_jobs/
+data/inputs/
+data/outputs/
+data/references/
+data/checkpoints/
+
+# Generated or presentation-only artifacts.
+reports/*_terrain.obj
+reports/*_terrain.mtl
+reports/*_terrain_texture.png
+reports/*_terrain_metadata.json
+reports/*.qgz
+reports/*.log

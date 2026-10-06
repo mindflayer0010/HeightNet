@@ -1,0 +1,371 @@
+/* Viewport Container & Workstation Canvas */
+.main-viewport-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  position: relative;
+  background-color: #0b0d10;
+  overflow: hidden;
+}
+
+/* CAD Viewport Header Toolbar */
+.viewport-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  min-height: 36px;
+  background-color: var(--bg-panel-header);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 10px;
+  z-index: 30;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.toolbar-btn {
+  height: 28px;
+  padding: 0 8px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 11px;
+  border: 1px solid transparent;
+  gap: 4px;
+}
+
+.toolbar-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.toolbar-btn.active {
+  background-color: var(--accent-muted);
+  color: var(--accent-light);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 14px;
+  background-color: var(--border-subtle);
+  margin: 0 4px;
+}
+
+/* Viewport Canvas Stage */
+.viewport-stage {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2D Canvas Container */
+.raster-stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: grab;
+  background: radial-gradient(circle at center, #15181e 0%, #0a0b0e 100%);
+  overflow: hidden;
+}
+
+.raster-stage.dragging {
+  cursor: grabbing;
+}
+
+.raster-stage.measuring {
+  cursor: crosshair;
+}
+
+.raster-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85);
+}
+
+/* Professional USGS / GIS Scale Bar */
+.gis-scale-bar {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background-color: rgba(18, 20, 24, 0.9);
+  border: 1px solid var(--border-medium);
+  padding: 3px 6px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 25;
+  pointer-events: none;
+  font-family: var(--font-mono);
+}
+
+.scale-ticks-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.scale-blocks-row {
+  display: flex;
+  height: 3px;
+  border: 1px solid #ffffff;
+}
+
+.scale-block-black {
+  flex: 1;
+  background-color: #000000;
+}
+
+.scale-block-white {
+  flex: 1;
+  background-color: #ffffff;
+}
+
+/* Crosshair Reticle */
+.viewport-reticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.viewport-reticle::before,
+.viewport-reticle::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(56, 189, 248, 0.55);
+}
+
+.viewport-reticle::before {
+  top: 9px;
+  left: 0;
+  width: 20px;
+  height: 1px;
+}
+
+.viewport-reticle::after {
+  top: 0;
+  left: 9px;
+  width: 1px;
+  height: 20px;
+}
+
+/* Distance Measurement Badge */
+.measurement-badge {
+  position: absolute;
+  background-color: rgba(14, 18, 24, 0.94);
+  border: 1px solid var(--accent-light);
+  border-radius: var(--radius-xs);
+  padding: 2px 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #38bdf8;
+  pointer-events: none;
+  z-index: 26;
+  white-space: nowrap;
+}
+
+/* 3D Three.js Container */
+.three-canvas-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #090a0d;
+}
+
+.terrain-load-state {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  background: rgba(18, 24, 29, 0.92);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.terrain-load-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+  animation: terrainPulse 1s ease-in-out infinite;
+}
+
+.terrain-load-error {
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 360px;
+  color: #fecdd3;
+  pointer-events: auto;
+}
+
+.terrain-load-error span {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@keyframes terrainPulse {
+  50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+/* Compact 3D View Controls */
+.viewport-3d-controls {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(24, 26, 31, 0.95);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xs);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  z-index: 25;
+}
+
+.viewport-3d-btn {
+  width: 24px;
+  height: 24px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0;
+}
+
+.viewport-3d-btn:last-child {
+  border-bottom: none;
+}
+
+.viewport-3d-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Flight Navigation HUD */
+.camera-mode-hud {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: rgba(18, 20, 24, 0.94);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xs);
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.hud-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+.hud-keys-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  color: var(--text-secondary);
+}
+
+.hud-key {
+  font-family: var(--font-mono);
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 0 3px;
+  color: var(--text-primary);
+}
+
+/* Qt / Desktop-Style Status Bar Panes */
+.viewport-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 22px;
+  min-height: 22px;
+  background-color: var(--bg-panel-header);
+  border-top: 1px solid var(--border-subtle);
+  padding: 0 4px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--text-secondary);
+  z-index: 30;
+}
+
+.status-panes-group {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.status-pane {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 7px;
+  height: 100%;
+  border-right: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+.status-pane:last-child {
+  border-right: none;
+}
+
+.status-label {
+  color: var(--text-muted);
+}
+
+.status-value {
+  color: var(--text-primary);
+}
+
+.status-value.accent {
+  color: var(--accent-light);
+}
+
+@media (max-width: 1440px) {
+  .status-pane.hide-md {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1180px) {
+  .status-pane.hide-sm {
+    display: none !important;
+  }
+}

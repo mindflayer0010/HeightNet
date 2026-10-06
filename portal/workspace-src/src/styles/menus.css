@@ -1,0 +1,95 @@
+/* Application Dropdown Menus & Context Menus */
+.dw-menu-container {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.dw-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 2px;
+  min-width: 180px;
+  background-color: var(--bg-panel-header);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-dropdown);
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  z-index: 2200;
+  isolation: isolate;
+  animation: menuFadeIn 100ms ease-out;
+}
+
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dw-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 8px;
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.dw-menu-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dw-menu-item:hover {
+  background-color: var(--accent-primary);
+  color: #ffffff;
+}
+
+.dw-menu-item:hover .dw-menu-shortcut {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.dw-menu-shortcut {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.dw-menu-separator {
+  height: 1px;
+  background-color: var(--border-subtle);
+  margin: 3px 2px;
+}
+
+.dw-menu-item.danger:hover {
+  background-color: var(--status-danger);
+}
+
+/* Layer Context Menu (Flyout) */
+.layer-context-menu {
+  position: fixed;
+  background-color: var(--bg-panel-header);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-dropdown);
+  min-width: 170px;
+  padding: 4px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
